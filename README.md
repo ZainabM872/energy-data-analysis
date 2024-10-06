@@ -19,4 +19,4 @@ This repository contains SQL scripts for analyzing global energy data sourced fr
 ## Usage
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/energy-data-analysis.git
+   git clone https://github.com/ZainabM872/energy-data-analysis.git
