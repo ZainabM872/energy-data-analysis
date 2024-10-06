@@ -129,3 +129,18 @@ SELECT
    CASE WHEN `Series Name` = 'CO2 emissions (metric tons per capita)' THEN `2000` END AS CO2_Emissions
 FROM energy_data
 WHERE `Series Name` = 'CO2 emissions (metric tons per capita)';
+
+--electricitty access data
+CREATE VIEW electricity_access_data AS
+SELECT
+   `Country Name`,
+   `2000` AS Year_2000,
+   `2005` AS Year_2005,
+   `2010` AS Year_2010,
+   `2015` AS Year_2015,
+   `2020` AS Year_2020
+FROM
+   energy_data
+WHERE
+   `Series Name` = 'Access to electricity (% of population)';
+SELECT * FROM electricity_access_data;
