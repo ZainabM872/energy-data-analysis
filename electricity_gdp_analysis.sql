@@ -70,3 +70,13 @@ SELECT
    AVG(`2020`) AS avg_2020
 FROM energy_data
 WHERE `Series Name` = 'Gross capital formation (% of GDP)';
+
+--Calculate yearly averages for CO2 emissions from electricity and heat production from energy_data
+SELECT
+   AVG(`2000`) AS avg_2000,
+   AVG(`2005`) AS avg_2005,
+   AVG(`2010`) AS avg_2010,
+   AVG(`2015`) AS avg_2015,
+   AVG(`2020`) AS avg_2020
+FROM energy_data
+WHERE `Series Name` = 'CO2 emissions from electricity and heat production, total (% of total fuel combustion)';
