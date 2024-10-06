@@ -109,3 +109,14 @@ WITH filtered_data AS (
         'Gross capital formation (% of GDP)'
     )
 )
+
+-- returns the max value for electricity, gdp, and co2 emissions for each country
+SELECT
+   `Country Name`,
+   MAX(ELEC_2000) AS MAXELEC_2000,
+   MAX(GDP_2000) AS MAXGDP_2000,
+   MAX(CO2_Emissions_2000) AS MAXCO2_2000
+FROM
+   filtered_data
+GROUP BY
+   `Country Name`;
