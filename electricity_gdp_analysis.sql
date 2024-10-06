@@ -144,3 +144,17 @@ FROM
 WHERE
    `Series Name` = 'Access to electricity (% of population)';
 SELECT * FROM electricity_access_data;
+
+--gdp data
+CREATE VIEW gdp_data AS
+SELECT
+   `Country Name`,
+   `2000` AS Year_2000,
+   `2005` AS Year_2005,
+   `2010` AS Year_2010,
+   `2015` AS Year_2015,
+   `2020` AS Year_2020
+FROM
+   energy_data
+WHERE
+   `Series Name` = 'Gross capital formation (% of GDP)';
