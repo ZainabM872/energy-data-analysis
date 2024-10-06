@@ -31,4 +31,12 @@ CREATE TABLE energy_data (
     `2020` DECIMAL(15, 2)
 );
 
-SELECT COUNT(*) FROM energy_data;
+SELECT COUNT(*) FROM energy_data; --Query to count total records in energy_data
+
+--check for null values
+SELECT COUNT(*) AS NULL_Country_Name FROM energy_data WHERE `Country Name` IS NULL;
+
+--Retrieve specific year data from energy_data
+SELECT `2000` FROM energy_data WHERE `2000` IS NOT NULL;
+
+DESCRIBE energy_data 
