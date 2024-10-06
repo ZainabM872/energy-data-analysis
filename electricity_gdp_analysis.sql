@@ -40,3 +40,13 @@ SELECT COUNT(*) AS NULL_Country_Name FROM energy_data WHERE `Country Name` IS NU
 SELECT `2000` FROM energy_data WHERE `2000` IS NOT NULL;
 
 DESCRIBE energy_data 
+
+--Calculate yearly averages for Access to electricity (% of population) from energy_data
+SELECT
+   AVG(`2000`) AS avg_2000,
+   AVG(`2005`) AS avg_2005,
+   AVG(`2010`) AS avg_2010,
+   AVG(`2015`) AS avg_2015,
+   AVG(`2020`) AS avg_2020
+FROM energy_data
+WHERE `Series Name` = 'Access to electricity (% of population)';
