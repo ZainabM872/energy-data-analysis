@@ -120,3 +120,12 @@ FROM
    filtered_data
 GROUP BY
    `Country Name`;
+
+--Extract CO2 emissions (metric tons per capita) for the year 2000 from energy_data.
+
+SELECT
+   `Country Name`,
+   `2000` AS Year,
+   CASE WHEN `Series Name` = 'CO2 emissions (metric tons per capita)' THEN `2000` END AS CO2_Emissions
+FROM energy_data
+WHERE `Series Name` = 'CO2 emissions (metric tons per capita)';
