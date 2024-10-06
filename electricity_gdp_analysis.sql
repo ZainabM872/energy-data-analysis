@@ -80,3 +80,32 @@ SELECT
    AVG(`2020`) AS avg_2020
 FROM energy_data
 WHERE `Series Name` = 'CO2 emissions from electricity and heat production, total (% of total fuel combustion)';
+
+--Create filtered_data CTE to aggregate key indicators for 2000: electricity access, GDP, and CO2 emissions
+WITH filtered_data AS (
+    SELECT
+        `Country Name`, -- The name of the country
+        `Series Name`,  -- The name of the series (indicator)
+        CASE
+            -- Capture electricity access data for the year 2000
+            WHEN `Series Name` = 'Access to electricity (% of population)' THEN `2000`
+            ELSE NULL
+        END AS ELEC_2000,  -- Electricity access for 2000
+        CASE
+            -- Capture GDP data for the year 2000
+            WHEN `Series Name` = 'Gross capital formation (% of GDP)' THEN `2000`
+            ELSE NULL
+        END AS GDP_2000,  -- GDP for 2000
+        CASE
+            -- Capture CO2 emissions data for the year 2000
+            WHEN `Series Name` = 'CO2 emissions (metric tons per capita)' THEN `2000`
+            ELSE NULL
+        END AS CO2_Emissions_2000 -- CO2 emissions for 2000
+    FROM energy_data  -- Source table
+    WHERE `Series Name` IN (
+        -- Filter for relevant series of interest
+        'Access to electricity (% of population)',
+        'CO2 emissions (metric tons per capita)',
+        'Gross capital formation (% of GDP)'
+    )
+)
