@@ -158,3 +158,18 @@ FROM
    energy_data
 WHERE
    `Series Name` = 'Gross capital formation (% of GDP)';
+
+
+--c02 data
+CREATE VIEW co2_data AS
+SELECT
+   `Country Name`,
+   `2000` AS Year_2000,
+   `2005` AS Year_2005,
+   `2010` AS Year_2010,
+   `2015` AS Year_2015,
+   `2020` AS Year_2020
+FROM
+   energy_data
+WHERE
+   `Series Name` = 'CO2 emissions (metric tons per capita)';
