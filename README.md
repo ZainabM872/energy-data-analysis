@@ -16,7 +16,17 @@ This repository contains SQL scripts for analyzing global energy data sourced fr
 - **View Definitions**: Views for electricity access, GDP, and CO2 emissions data.
 - **Analysis of Economic Growth**: Investigations into the correlation between electricity access improvement and GDP growth.
 
+## Technologies Used
+- SQL
+- Power BI
+- GitHub
+- 
 ## Usage
 1. Clone the repository:
    ```bash
    git clone https://github.com/ZainabM872/energy-data-analysis.git
+  
+## Key Findings
+- **Electricity Access**: There has been a significant increase in electricity access in many countries between 2000 and 2020.
+- **GDP Growth**: Countries that improved their electricity access tended to have higher GDP growth rates.
+- **CO2 Emissions**: A correlation was observed between increased electricity access and changes in CO2 emissions per capita, with implications for sustainable development.
