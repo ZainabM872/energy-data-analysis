@@ -208,3 +208,33 @@ FROM
    electricity_gdp_analysis  -- Using the electricity_gdp_analysis view created earlier
 GROUP BY
    Improvement_Category;  -- Grouping results by improvement category
+
+-- Creating a view that combines electricity access, GDP, and CO2 emissions data for each country over multiple years.
+
+CREATE VIEW combined_trends AS
+SELECT
+   e.`Country Name`,
+   e.`Year_2000` AS Electricity_Access_2000,
+   e.`Year_2005` AS Electricity_Access_2005,
+   e.`Year_2010` AS Electricity_Access_2010,
+   e.`Year_2015` AS Electricity_Access_2015,
+   e.`Year_2020` AS Electricity_Access_2020,
+   g.`Year_2000` AS GDP_2000,
+   g.`Year_2005` AS GDP_2005,
+   g.`Year_2010` AS GDP_2010,
+   g.`Year_2015` AS GDP_2015,
+   g.`Year_2020` AS GDP_2020,
+   c.`Year_2000` AS CO2_2000,
+   c.`Year_2005` AS CO2_2005,
+   c.`Year_2010` AS CO2_2010,
+   c.`Year_2015` AS CO2_2015,
+   c.`Year_2020` AS CO2_2020
+FROM
+   electricity_access_data e -- Using the electricity access data view
+JOIN
+
+JOIN
+   gdp_data g ON e.`Country Name` = g.`Country Name` -- Joining with GDP data based on country name
+JOIN
+   co2_data c ON e.`Country Name` = c.`Country Name`; -- Joining with CO2 data based on country name
+SELECT * FROM combined_trends;-- Selecting all data from the combined trends view
