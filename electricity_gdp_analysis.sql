@@ -238,3 +238,12 @@ JOIN
 JOIN
    co2_data c ON e.`Country Name` = c.`Country Name`; -- Joining with CO2 data based on country name
 SELECT * FROM combined_trends;-- Selecting all data from the combined trends view
+
+-- Calculating percentage changes in electricity access, GDP, and CO2 emissions from the year 2000 to 2020 for each country.
+SELECT
+   `Country Name`,  -- Selecting the country name
+   (Electricity_Access_2020 - Electricity_Access_2000) / Electricity_Access_2000 * 100 AS Electricity_Access_Change,  -- Calculating the percentage change in electricity access
+   (GDP_2020 - GDP_2000) / GDP_2000 * 100 AS GDP_Change,  -- Calculating the percentage change in GDP
+   (CO2_2020 - CO2_2000) / CO2_2000 * 100 AS CO2_Change  -- Calculating the percentage change in CO2 emissions
+FROM
+   combined_trends;  -- Using the combined trends view to retrieve the necessary data
