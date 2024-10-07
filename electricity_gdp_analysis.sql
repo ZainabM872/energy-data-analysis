@@ -194,3 +194,17 @@ JOIN
 
 -- Selecting all records from the electricity_gdp_analysis view
 SELECT * FROM electricity_gdp_analysis;
+
+-- This query categorizes countries based on the improvement in electricity access 
+-- and calculates the average GDP growth for each category.
+SELECT
+   CASE
+       WHEN `Electricity_Access_Improvement` > 20 THEN 'Significant Improvement'  -- Categorizes as significant if improvement is over 20%
+       WHEN `Electricity_Access_Improvement` BETWEEN 0 AND 20 THEN 'Moderate Improvement'  -- Categorizes as moderate for 0-20% improvement
+       ELSE 'No Improvement'  -- Categorizes as no improvement if there is no increase
+   END AS Improvement_Category,  -- Naming the resulting category column
+   AVG(`GDP_Growth`) AS Average_GDP_Growth  -- Calculating average GDP growth for the grouped categories
+FROM
+   electricity_gdp_analysis  -- Using the electricity_gdp_analysis view created earlier
+GROUP BY
+   Improvement_Category;  -- Grouping results by improvement category
