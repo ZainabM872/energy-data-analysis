@@ -173,3 +173,24 @@ FROM
    energy_data
 WHERE
    `Series Name` = 'CO2 emissions (metric tons per capita)';
+
+-- Effect on Economic Growth: 
+-- This view analyzes the relationship between improvements in electricity access 
+-- and GDP growth for various countries over the years.
+
+CREATE VIEW electricity_gdp_analysis AS
+SELECT
+   e.`Country Name`,  -- Name of the country
+   e.`Year_2000`,  -- Electricity access percentage in the year 2000
+   e.`Year_2020` AS `Electricity_Access_2020`,  -- Electricity access percentage in the year 2020
+   (e.`Year_2020` - e.`Year_2000`) AS `Electricity_Access_Improvement`,  -- Improvement in electricity access from 2000 to 2020
+   g.`Year_2000` AS `GDP_2000`,  -- GDP percentage in the year 2000
+   g.`Year_2020` AS `GDP_2020`,  -- GDP percentage in the year 2020
+   (g.`Year_2020` - g.`Year_2000`) AS `GDP_Growth`  -- GDP growth from 2000 to 2020
+FROM
+   electricity_access_data e  -- Using electricity access data
+JOIN
+   gdp_data g ON e.`Country Name` = g.`Country Name`;  -- Joining with GDP data based on country name
+
+-- Selecting all records from the electricity_gdp_analysis view
+SELECT * FROM electricity_gdp_analysis;
